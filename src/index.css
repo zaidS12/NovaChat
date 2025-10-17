@@ -1,0 +1,213 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* CSS Variables for Theme System */
+:root {
+  /* Light Theme Colors */
+  --bg-light: #ffffff;
+  --surface-light: #f8fafc;
+  --muted-light: #f1f5f9;
+  --text-primary-light: #0f172a;
+  --text-secondary-light: #64748b;
+  
+  /* Dark Theme Colors */
+  --bg-dark: #0f172a;
+  --surface-dark: #1e293b;
+  --muted-dark: #334155;
+  --text-primary-dark: #f8fafc;
+  --text-secondary-dark: #cbd5e1;
+  
+  /* Accent Colors */
+  --accent-1: #3b82f6;
+  --accent-2: #8b5cf6;
+  --danger: #ef4444;
+  --success: #10b981;
+  
+  /* Color Palette for Accent Color Picker */
+  --color-blue-500: #3b82f6;
+  --color-purple-500: #8b5cf6;
+  --color-green-500: #10b981;
+  --color-orange-500: #f97316;
+  --color-red-500: #ef4444;
+  
+  /* Page Accent Overlays */
+  --dashboard-accent: rgba(20, 184, 166, 0.08);
+  --chatbot-accent: rgba(139, 92, 246, 0.08);
+  --settings-accent: rgba(245, 158, 11, 0.08);
+  --profile-accent: rgba(59, 130, 246, 0.08);
+  --auth-accent: rgba(100, 116, 139, 0.05);
+  
+  /* Shadows */
+  --elevation-low: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --elevation-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --elevation-high: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  
+  /* Border Radius */
+  --r-sm: 0.375rem;
+  --r-md: 0.5rem;
+  --r-lg: 0.75rem;
+  
+  /* Motion */
+  --motion-fast: 120ms;
+  --motion-medium: 280ms;
+  --motion-slow: 420ms;
+  
+  /* Borders */
+  --border-strong: rgba(0, 0, 0, 0.12);
+  --border-subtle: rgba(0, 0, 0, 0.06);
+}
+
+/* Dark theme overrides */
+.dark {
+  --border-strong: rgba(255, 255, 255, 0.12);
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  
+  /* Dark theme shadows */
+  --elevation-low: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  --elevation-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  --elevation-high: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+}
+
+/* Base styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color var(--motion-medium) ease, color var(--motion-medium) ease;
+}
+
+/* Standardized page backgrounds */
+.page-background {
+  min-height: 100vh;
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.1) 0%, 
+    rgba(0, 0, 0, 0.02) 100%),
+    radial-gradient(circle at 50% 0%, 
+    rgba(255, 255, 255, 0.1) 0%, 
+    transparent 50%);
+  position: relative;
+}
+
+.dark .page-background {
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.05) 0%, 
+    rgba(0, 0, 0, 0.1) 100%),
+    radial-gradient(circle at 50% 0%, 
+    rgba(255, 255, 255, 0.05) 0%, 
+    transparent 50%);
+}
+
+/* Page accent overlays */
+.dashboard-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--dashboard-accent);
+  pointer-events: none;
+}
+
+.chatbot-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--chatbot-accent);
+  pointer-events: none;
+}
+
+.settings-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--settings-accent);
+  pointer-events: none;
+}
+
+.profile-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--profile-accent);
+  pointer-events: none;
+}
+
+.auth-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--auth-accent);
+  pointer-events: none;
+}
+
+/* Glass effect utility */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark .glass {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus styles */
+.focus-ring:focus-visible {
+  outline: 2px solid var(--accent-1);
+  outline-offset: 2px;
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
